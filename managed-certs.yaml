@@ -1,0 +1,15 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: first
+spec:
+  domains:
+    - venkat.devops2024practice.shop
+---
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: second
+spec:
+  domains:
+    - ram.devops2024practice.shop

@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-gmc-ingress
+  annotations:
+    networking.gke.io/managed-certificates: "first,second"
+spec:
+  rules:
+  - host: venkat.devops2024practice.shop
+    http:
+      paths:
+      - pathType: ImplementationSpecific
+        backend:
+          service:
+            name: my-mc-service
+            port:
+              number: 60001
+  - host: ram.devops2024practice.shop
+    http:
+      paths:
+      - pathType: ImplementationSpecific
+        backend:
+          service:
+            name: my-mc-service
+            port:
+              number: 60002
