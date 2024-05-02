@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fanout-ingress
+  annotations:
+    ingressClassName: "gce"
+    networking.gke.io/managed-certificates: "managed-cert"
+spec:
+  rules:
+  - host: sai.devops2024practice.shop
+    http:
+      paths:
+      - path: /*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: web
+            port:
+              number: 8080
+      - path: /v2/*
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: web2
+            port:
+              number: 8080
